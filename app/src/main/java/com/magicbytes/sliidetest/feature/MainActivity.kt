@@ -1,7 +1,8 @@
-package com.magicbytes.sliidetest
+package com.magicbytes.sliidetest.feature
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.magicbytes.sliidetest.R
 
 class MainActivity : AppCompatActivity() {
 
