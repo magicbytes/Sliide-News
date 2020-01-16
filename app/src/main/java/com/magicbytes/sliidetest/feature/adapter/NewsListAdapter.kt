@@ -2,18 +2,21 @@ package com.magicbytes.sliidetest.feature.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.magicbytes.sliidetest.R
 import com.magicbytes.sliidetest.feature.adapter.viewHolders.BaseNewsViewHolder
 import com.magicbytes.sliidetest.feature.adapter.viewHolders.CarouselNewsViewHolder
 import com.magicbytes.sliidetest.feature.adapter.viewHolders.SingleNewsViewHolder
+import com.magicbytes.sliidetest.util.DataClassDiffUtils
 
 class NewsListAdapter : RecyclerView.Adapter<BaseNewsViewHolder>() {
 
     var news: List<NewsListItem> = emptyList()
         set(value) {
+            val diffResult = DiffUtil.calculateDiff(DataClassDiffUtils(news, value))
             field = value
-            notifyDataSetChanged()
+            diffResult.dispatchUpdatesTo(this)
         }
 
 

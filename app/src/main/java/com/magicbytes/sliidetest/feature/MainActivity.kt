@@ -2,6 +2,9 @@ package com.magicbytes.sliidetest.feature
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.magicbytes.sliidetest.R
@@ -52,6 +55,22 @@ class MainActivity : AppCompatActivity() {
 
             adapter.news = displayListItems
         })
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.main_activity_menu, menu)
+        return true
+
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.refreshItem -> {
+                viewModel.refreshNews()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
 
