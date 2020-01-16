@@ -17,6 +17,8 @@ class SingleNewsViewHolder(itemView: View) : BaseNewsViewHolder(itemView) {
         val news = newsListItem.data as? News ?: return
 
         titleTextView.text = news.title
-        Picasso.get().load(news.contentSourceLogo).into(imageView)
+        if (news.contentSourceLogo.isNotEmpty()) {
+            Picasso.get().load(news.contentSourceLogo).into(imageView)
+        }
     }
 }
